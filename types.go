@@ -4,7 +4,7 @@ package main
 type Event struct {
 	AccountID          string `json:"accountId"`
 	AnomalyDetailsLink string `json:"anomalyDetailsLink"`
-	AnomalyId          string `json:"anomalyId"`
+	AnomalyID          string `json:"anomalyId"`
 	DimensionalValue   string `json:"dimensionalValue"`
 	Impact             Impact `json:"impact"`
 }
