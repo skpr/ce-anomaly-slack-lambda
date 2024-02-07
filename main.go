@@ -10,8 +10,11 @@ import (
 )
 
 const (
-	EnvSlackWebhook   = "SKPR_CE_ANOMALY_LAMBDA_SLACK_WEBHOOK"
-	EnvSlackIcon      = "SKPR_CE_ANOMALY_LAMBDA_SLACK_ICON"
+	// EnvSlackWebhook is used to define the Slack webhook URL.
+	EnvSlackWebhook = "SKPR_CE_ANOMALY_LAMBDA_SLACK_WEBHOOK"
+	// EnvSlackIcon is used to define the Slack icon.
+	EnvSlackIcon = "SKPR_CE_ANOMALY_LAMBDA_SLACK_ICON"
+	// EnvSlackDashboard is used to define the Slack dashboard URL.
 	EnvSlackDashboard = "SKPR_CE_ANOMALY_LAMBDA_SLACK_DASHBOARD"
 )
 
@@ -19,7 +22,7 @@ func main() {
 	lambda.Start(HandleLambdaEvent)
 }
 
-// HandleLambdaEvent will respond to a CloudWatch Alarm, check for rate limited IP addresses and send a message to Slack.
+// HandleLambdaEvent will respond to a Cost Explorer anomaly and post it to Slack.
 func HandleLambdaEvent(ctx context.Context, event *Event) error {
 	client, err := slack.NewClient([]string{
 		os.Getenv(EnvSlackWebhook),
