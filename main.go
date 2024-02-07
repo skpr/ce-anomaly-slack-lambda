@@ -41,7 +41,7 @@ func HandleLambdaEvent(ctx context.Context, event *Event) error {
 	params := slack.PostMessageParams{
 		Context: map[string]string{
 			"Account":    event.AccountID,
-			"Anomaly ID": event.AnomalyId,
+			"Anomaly ID": event.AnomalyID,
 		},
 		Description: "Cost anomaly has been detected!",
 		Reason:      fmt.Sprintf("%s has increased by %f%%", event.DimensionalValue, event.Impact.TotalImpactPercentage),
